@@ -1,0 +1,230 @@
+
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+@mixin flexbox() {display: flex;font-size:0}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,600&display=swap');
+// @import "fonts";
+
+$fontfamily: Rubik, sans-serif;
+$linkcolor: #ff3b3b;
+
+$minwidth: 320px;
+$mw: 1170;
+$md1: $mw+12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+
+
+//clear
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+*,*:after,*:before {
+    box-sizing: border-box;
+}
+:focus,:active {
+    outline: none;
+}
+a:focus,a:active {
+    outline: none;
+}
+aside,nav,footer,header,section {
+    display: block;
+}
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: $minwidth;
+    position: relative;
+    width: 100%;
+    color: #000;
+}
+body {
+    font-size: 100%;
+    line-height: 1;
+    font-size: 16px;
+    font-family: $fontfamily;
+}
+input,button,textarea {
+    font-family: $fontfamily;
+}
+input:-ms-clear {display: none;}
+button {cursor: pointer;}
+button::-moz-focus-inner {padding: 0;border: 0;}
+a, a:visited{
+    text-decoration: none;
+    color: $linkcolor;
+    transition: all 0.5s;
+}
+a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+ul li {list-style: none;}
+img {vertical-align: top;}
+h1, h2, h3, h4, h5, h6 {font-weight: inherit;font-size: inherit;}
+//end clear
+
+ol li {
+    margin: 0 0 0 22px;
+}
+
+ol.multilevel-list, ol.multilevel-list ol {
+    list-style: none;
+    counter-reset: li;
+}
+ol.multilevel-list > li:before, ol.multilevel-list ol > li:before {
+    counter-increment: li;
+    content: counters(li, ".") ". ";
+}
+
+ul.circle li {
+    list-style: circle;
+    margin: 0 0 0 22px;
+}
+
+p {
+    line-height: 1.8;
+    margin: 0 0 16px 0;
+}
+ol li, ul li {
+    line-height: 1.8;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Merriweather, serif;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin: 32px 0 28px 0;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 22px 0 18px 0;
+}
+
+h3,h4,h5,h6 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 18px 0 12px 0;
+}
+
+figcaption {
+    font-size: 12px;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.wrapper {
+    width: 100%;
+    min-width: 100%;
+    overflow: hidden;
+
+    padding-top: 50px;
+    @media (max-width:$md2+px) {
+        padding: 0;
+    }
+}
+
+.container {
+    min-width: $minwidth;
+    max-width: $mw+px;
+    margin: 0 auto;
+    @media (max-width:$md1+px){
+        max-width: 970px;
+    }
+    @media (max-width:$md2+px){
+        max-width: 750px;
+    }
+    @media (max-width:$md3+px){
+        max-width: none;
+        padding: 0 15px;
+    }
+}
+
+.content {
+    &__body {
+        margin: 0 0 25px 0;
+    }
+}
+textarea {
+    border: 1px solid #9c9c9c;
+    padding: 10px;
+}
+input,select {
+    border: 1px solid #9c9c9c;
+    height: 40px;
+    font-size: 20px;
+    padding: 0 0 0 10px;
+}
+
+select {
+    appearance: none;
+    background: url('/img/arrow-down.svg') 97% / 4% no-repeat;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
+.form {
+    &__button {
+        border-radius: 20px;
+        width: fit-content;
+        padding: 0 15px;
+        background: #000;
+        font-size: 20px;
+        color: #fff;
+        transition: all 0.5s;
+    }
+    &__button:hover {
+        opacity: 0.6;
+    }
+    &__field-error {
+        border: 1px solid #ff3b3b;
+    }
+}
+
+a.link-button {
+    display: inline-block;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 12px 15px;
+    background: #000;
+    font-size: 18px;
+    color: #fff;
+    transition: all 0.5s;
+}
+a.link-button:hover {
+    opacity: 0.6;
+}
+
+.center {
+    text-align: center;
+}
+
+@import "header.scss";
+@import "main.scss";
+@import "footer.scss";
+
